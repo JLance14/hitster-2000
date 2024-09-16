@@ -1,8 +1,35 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {fetchSongs} from "./utils/playlists";
+import {Song} from "./utils/models";
+import {playTrack} from "./utils/play";
 
-function App() {
+const App = () => {
+
+  const [songs, setSongs] = React.useState<Song[]>([])
+
+  useEffect(() => {
+
+    const getSongs = async () => {
+      try {
+        const playlistSongs = await fetchSongs();
+        console.log({playlistSongs})
+        setSongs(playlistSongs)
+
+      } catch (error) {
+        console.error('Error fetching songs:', error);
+      }
+    };
+
+    getSongs();
+  }, []);
+
+  // useEffect(() => {
+  //   console.log("SWITCHING SONG")
+  //   playTrack()
+  //   }, [])
+
   return (
     <div className="App">
       <header className="App-header">

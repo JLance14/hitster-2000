@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES6",
     "lib": [
       "dom",
       "dom.iterable",
@@ -15,7 +15,9 @@
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
     "moduleResolution": "node",
+    "outDir": "./dist",
     "resolveJsonModule": true,
+    "rootDir": "./src",
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx"
