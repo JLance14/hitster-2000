@@ -1,5 +1,5 @@
 import {Song} from './models'
-import {call_endpoint} from "./spotify";
+import {call_spotify_endpoint} from "./spotify";
 
 const PLAYLIST_2000_ID = "1udqwx26htiKljZx4HwVxs"
 const PLAYLIST_2010_BANGERS_ID = "357fWKFTiDhpt9C69CMG4q"
@@ -24,7 +24,7 @@ const shuffleSongs = (array: Song[]): Song[] => {
 export const fetchSongs = async () => {
     let songs: Song[] = []
     for (const playlist_id of PLAYLIST_IDS) {
-        const results = await call_endpoint(`/playlists/${playlist_id}/tracks`)
+        const results = await call_spotify_endpoint(`/playlists/${playlist_id}/tracks`)
         const playlist_songs = results["items"]
 
 

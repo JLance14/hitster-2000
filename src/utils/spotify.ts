@@ -1,16 +1,19 @@
-import {getToken} from "./login";
+import {getSpotifyToken} from "./login";
 
-export const BASE_URL = "https://api.spotify.com/v1"
+export const BASE_SPOTIFY_URL = "https://api.spotify.com/v1"
 
 // TODO V2 - switch http method to enum
-export const call_endpoint = async (endpoint: string, method: string = "GET", body: any = null) => {
+export const call_spotify_endpoint = async (endpoint: string, method: string = "GET", body: any = null) => {
 
     console.log(`calling endpoint ${endpoint}`)
 
-    const response = await fetch(`${BASE_URL}${endpoint}`, {
+    const token = await getSpotifyToken()
+    console.log({token})
+
+    const response = await fetch(`${BASE_SPOTIFY_URL}${endpoint}`, {
         method: method,
         headers: {
-            'Authorization': `Bearer ${await getToken()}`,
+            'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json',
         },
         body: body

@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import {fetchSongs} from "./utils/playlists";
 import {Song} from "./utils/models";
-import {playTrack} from "./utils/play";
+import {call_server_endpoint} from "./utils/server";
 
 const App = () => {
 
@@ -25,10 +25,17 @@ const App = () => {
     getSongs();
   }, []);
 
-  // useEffect(() => {
-  //   console.log("SWITCHING SONG")
-  //   playTrack()
-  //   }, [])
+  useEffect(() => {
+    // console.log("SWITCHING SONG")
+    const callServer = async () => {
+      const result = await call_server_endpoint(`/`)
+      console.log(result)
+    }
+
+    callServer()
+
+    // playTrack()
+    }, [])
 
   return (
     <div className="App">

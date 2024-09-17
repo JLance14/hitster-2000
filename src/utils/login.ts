@@ -19,7 +19,7 @@ const authOptions = {
 };
 
 
-export const getToken = async () => {
+export const getSpotifyToken = async () => {
     try {
         const response = await fetch(authOptions.url, authOptions);
 
