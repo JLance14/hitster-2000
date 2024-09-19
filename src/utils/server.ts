@@ -4,6 +4,8 @@ export const call_server_endpoint = async (endpoint: string, method: string = "G
 
     console.log(`calling server endpoint ${endpoint}`)
 
+    console.log(`Fetching: ${BASE_SERVER_URL}${endpoint}`)
+
     const response = await fetch(`${BASE_SERVER_URL}${endpoint}`, {
         method: method,
         headers: {
@@ -12,10 +14,11 @@ export const call_server_endpoint = async (endpoint: string, method: string = "G
         body: body
     })
 
-    console.log(response)
 
     if (!response.ok) {
+        console.log("ERROR IN SERVER RESPONSE")
         throw new Error(`HTTP error! status: ${response.status}`);
     }
+
     return response.json();
 }

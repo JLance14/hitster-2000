@@ -4,9 +4,6 @@ export const BASE_SPOTIFY_URL = "https://api.spotify.com/v1"
 
 // TODO V2 - switch http method to enum
 export const call_spotify_endpoint = async (endpoint: string, method: string = "GET", body: any = null) => {
-
-    console.log(`calling endpoint ${endpoint}`)
-
     const token = await getSpotifyToken()
     console.log({token})
 
@@ -18,8 +15,6 @@ export const call_spotify_endpoint = async (endpoint: string, method: string = "
         },
         body: body
     })
-
-    console.log(response)
 
     if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
