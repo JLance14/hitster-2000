@@ -2,9 +2,10 @@ import React, {useEffect} from 'react';
 import './App.css';
 import {fetchSongs} from "./utils/playlists";
 import {Song} from "./utils/models";
-import {Route, Routes, useNavigate} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import {Dashboard} from "./components/Dashboard";
 import {Login} from "./components/Login";
+import {TrackPlayer} from "./components/TrackPlayer";
 
 const App = () => {
 
@@ -31,6 +32,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/play" element={<TrackPlayer />} />
         </Routes>
       </>
   );

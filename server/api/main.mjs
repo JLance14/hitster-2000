@@ -76,6 +76,6 @@ app.get('/callback', async function (req, res) {
         console.log("calling spotify endpoint")
         const response = await fetch(authOptions.url, authOptions);
         const data = await response.json();
-        res.json({token: data.access_token})
+        res.redirect(`${process.env.REACT_APP_CLIENT_URL}/?token=${data.access_token}`);
     }
 });
