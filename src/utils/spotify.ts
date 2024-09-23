@@ -3,7 +3,7 @@ import {getSpotifyToken} from "./login";
 export const BASE_SPOTIFY_URL = "https://api.spotify.com/v1"
 
 // TODO V2 - switch http method to enum
-export const call_spotify_endpoint = async (endpoint: string, token?: string | null, method: string = "GET", body: any = null) => {
+export const callSpotifyEndpoint = async (endpoint: string, token?: string | null, method: string = "GET", body: any = null) => {
     let bearer_token = ""
     if (!token)
         bearer_token = await getSpotifyToken()
@@ -27,4 +27,18 @@ export const call_spotify_endpoint = async (endpoint: string, token?: string | n
         return null
 
     return response.json()
+}
+
+export const playSong = (album_id: string, track_number: number) => {
+    callSpotifyEndpoint("/me/player/play", localStorage.getItem("spotify_token"), "PUT", JSON.stringify({
+        "context_uri": `spotify:album:${album_id}`,
+        "offset": {
+            "position": track_number-1
+        },
+        "position_ms": 0
+    }))
+}
+
+export const pauseSong = () => {
+    callSpotifyEndpoint("/me/player/pause", localStorage.getItem("spotify_token"), "PUT")
 }

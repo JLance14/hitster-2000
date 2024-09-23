@@ -5,7 +5,7 @@ import {Song} from "./utils/models";
 import {Route, Routes} from "react-router-dom";
 import {Dashboard} from "./components/Dashboard";
 import {Login} from "./components/Login";
-import {TrackPlayer} from "./components/TrackPlayer";
+import {TrackPlayer} from "./components/TrackPlayer/TrackPlayer";
 
 const App = () => {
 
@@ -16,7 +16,6 @@ const App = () => {
     const getSongs = async () => {
       try {
         const playlistSongs = await fetchSongs();
-        console.log({playlistSongs})
         setSongs(playlistSongs)
 
       } catch (error) {
@@ -32,7 +31,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/play" element={<TrackPlayer />} />
+          <Route path="/play" element={<TrackPlayer songs={songs} />} />
         </Routes>
       </>
   );

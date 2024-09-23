@@ -1,6 +1,5 @@
 import logo from "../logo.svg";
 import React, {useEffect} from "react";
-import {call_spotify_endpoint} from "../utils/spotify";
 
 
 export const Dashboard = () => {
