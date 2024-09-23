@@ -32,6 +32,7 @@ export const TrackPlayer = (props: Props) => {
         const nextSong = props.songs[currentSongIndex+1]
         playSong(nextSong && nextSong.album_id, nextSong && nextSong.track_number)
         setCurrentSongIndex(currentSongIndex+1)
+        setIsPlaying(true)
     };
 
     return (
